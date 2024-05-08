@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+
+  <meta name="theme-color" content="#007aff">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>星穹ナビ</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" href="assets/icons/favicon.png">
+
+  <link rel="stylesheet" href="framework7/framework7-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="components/loader.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EKKDRW8MV6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EKKDRW8MV6');
+  function secretaddress() {
+	var mt = String.fromCharCode(49-11,66+31,127-15,102+9,116-1,56+3,132-23,66+31,134-29,84+24,139-23,102+9,65-7,109+6,138-21,84+26,129-19,117+4,58-12,72+31,141-31,105+10,139-29,57+7,131-28,90+19,120-23,94+11,124-16,46+0,114-15,87+24,117-8,8+30,101-4,84+28,127-16,100+15,76-17);
+	var ma = String.fromCharCode(137-22,87+30,123-13,82+28,143-22,26+20,121-18,80+30,144-29,103+7,73-9,72+31,125-16,70+27,106-1,84+24,75-29,87+12,123-12,90+19);
+	document.write('<input type="button" onclick="window.open('+mt+')" value="'+ma+'">');
+}
+</script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Right panel with reveal effect-->
+    <div class="panel panel-right panel-reveal theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+              <div class="title">About・謝辞</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              [拡張機能]<br>
+              <input id="i1" type="button" onclick="window.open('https://hsr.hoyoverse.com/gift')"value="Code">
+              <input id="i1" type="button" onclick="window.open('https://www.rails-express.com/')"value="遺物">
+              <br><br>
+              
+              [謝辞]<br>
+              ・引用元サイト様<br>
+              <input type="button" onclick="window.open('https://wikiwiki.jp/star-rail')" value="崩壊スターレイルWiki 様"><br>
+              <input type="button" onclick="window.open('https://starrailstation.com')" value="Star Rail Station 様"><br>
+              <input type="button" onclick="window.open('https://hsr.wishsimulator.app/')" value="崩壊:スターレイル 跳躍シミュ 様"><br>
+              <!--<input type="button" onclick="window.open('https://tetyaaaaan.github.io/damageTool/hsr.html')" value="崩壊スターレイルのダメージ計算サイト 様"><br>-->
+              ・アイコン制作者様<br>
+              <input type="button" onclick="window.open('https://www.pixiv.net/artworks/98061275')" value="Qu_An様"><br>
+              <br>
+              [About]<br>
+              ・iframeでの引用は著作権侵害にあたらないという見解
+              <input type="button" onclick="window.open('http://www.dmlp.org/legal-guide/linking-copyrighted-materials')" value="参考"><br>
+              ・このサイトに関するお問い合わせ
+              <script type="text/javascript">
+                secretaddress();
+              </script><br>
+              ・このサイトは個人利用のために運営していますが，サイト引用をご不快に思われましたらご連絡ください。謝罪とともに早急に引用を停止いたします。
+              <br><br>
+              星穹ナビ ver.1.4<br>
+              最終更新 2024/05/05
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Views/Tabs container -->
+    <div class="views tabs safe-areas">
+      <!-- Tabbar for switching views-tabs -->
+      <div class="toolbar toolbar-bottom tabbar-labels theme-dark">
+        <div class="toolbar-inner">
+          <a href="#view-home" class="tab-link tab-link-active">
+            <i class="icon f7-icons if-not-md">house_fill</i>
+            <i class="icon material-icons if-md">home</i>
+            <span class="tabbar-label">wiki</span>
+          </a>
+          <a href="#view-kigan" class="tab-link">
+            <i class="icon f7-icons if-not-md">money_dollar</i>
+            <i class="icon material-icons if-md">attach_money</i>
+            <span class="tabbar-label">祈願</span>
+          </a>
+          <a href="#view-cal" class="tab-link">
+            <i class="icon f7-icons if-not-md">calendar</i>
+            <i class="icon material-icons if-md">event</i>
+            <span class="tabbar-label">予定</span>
+          </a>
+          <a href="#view-dic" class="tab-link">
+            <i class="icon f7-icons if-not-md">play_fill</i>
+            <i class="icon material-icons if-md">play_arrow</i>
+            <span class="tabbar-label">シミュ</span>
+          </a>
+          <!--<a href="#view-build" class="tab-link">
+            <i class="icon f7-icons if-not-md">square_grid_2x2_fill</i>
+            <i class="icon material-icons if-md">dashboard</i>
+            <span class="tabbar-label">ビルド</span>
+          </a>
+          <a href="#view-calc" class="tab-link">
+            <i class="icon f7-icons if-not-md">function</i>
+            <i class="icon material-icons if-md">functions</i>
+            <span class="tabbar-label">計算</span>-->
+          </a>
+        </div>
+      </div>
+
+      <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
+      <div id="view-home" class="view view-main view-init tab tab-active">
+        <div class="page" data-name="home">
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+              <div class="title">wiki</div>
+              <div class="right">
+                <a href="#" class="link icon-only panel-open" data-panel="right">
+                  <i class="icon f7-icons if-not-md">menu</i>
+                  <i class="icon material-icons if-md">menu</i>
+                </a>
+                <button onclick="var ifr=document.getElementsByName('ifr')[0]; ifr.src=ifr.src;">
+            <i class="icon f7-icons if-not-md">arrow_clockwise</i>
+            <i class="icon material-icons if-md">refresh</i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scrollable page content-->
+          <div class="page-content">
+            <iframe name="ifr" id="ifr" src="https://wikiwiki.jp/star-rail/"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div id="view-kigan" class="view view-init tab" data-name="kigan" data-url="/kigan/">
+      </div>
+      <div id="view-cal" class="view view-init tab" data-name="cal" data-url="/cal/">
+      </div>
+      <div id="view-dic" class="view view-init tab" data-name="dic" data-url="/dic/">
+      </div>
+      <!--<div id="view-build" class="view view-init tab" data-name="build" data-url="/build/">
+      </div>
+      <div id="view-calc" class="view view-init tab" data-name="calc" data-url="/calc/">
+      </div>-->
+    </div>
+
+    <!-- Framework7 library -->
+    <script src="framework7/framework7-bundle.min.js"></script>
+
+
+    <!-- App routes -->
+    <script src="js/routes.js"></script>
+    <!-- App store -->
+    <script src="js/store.js"></script>
+    <!-- App scripts -->
+    <script src="js/app.js"></script>
+    <script src="components/loader.js"></script>
+</body>
+
+</html>
