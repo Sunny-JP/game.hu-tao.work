@@ -46,6 +46,8 @@ body {
     text-align: left;
     color: #cccccc;
     font-size: 12px;
+    margin-left: -15px;
+    margin-right: 10px;
 }
 .smallmiddle {
     margin-top: 20px;
