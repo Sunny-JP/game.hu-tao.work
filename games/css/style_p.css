@@ -117,3 +117,13 @@ a {
     break-inside: avoid;
     margin-bottom: 5px;
 }
+
+.group summary {
+    display: flex;
+    align-items: center;
+}
+.group summary::marker,
+.group summary::-webkit-details-marker {
+    display: none;
+    content: '';
+}
